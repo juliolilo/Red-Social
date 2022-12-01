@@ -1,7 +1,7 @@
-import { Typography, useTheme } from "@mui/material";
+import { Typography, useTheme, Link } from "@mui/material";
 import FlexBetween from "components/FlexBetween";
 import WidgetWrapper from "components/WidgetWrapper";
-
+import src1 from "../../assets/portfolio.png";
 const AdvertWidget = () => {
   const { palette } = useTheme();
   const dark = palette.neutral.dark;
@@ -12,7 +12,7 @@ const AdvertWidget = () => {
     <WidgetWrapper>
       <FlexBetween>
         <Typography color={dark} variant="h5" fontWeight="500">
-          Sponsored
+          Creado por
         </Typography>
         <Typography color={medium}>Create Ad</Typography>
       </FlexBetween>
@@ -20,16 +20,18 @@ const AdvertWidget = () => {
         width="100%"
         height="auto"
         alt="advert"
-        src="http://localhost:3001/assets/info4.jpeg"
+        /*src="http://localhost:3001/assets/info4.jpeg" */
+        src={src1}
         style={{ borderRadius: "0.75rem", margin: "0.75rem 0" }}
       />
       <FlexBetween>
-        <Typography color={main}>MikaCosmetics</Typography>
-        <Typography color={medium}>mikacosmetics.com</Typography>
+        <Typography color={main}>Julio Méndez</Typography>
+        
+        <Link href="https://juliolilo.github.io/Portfolio-Personal/" target="_blank">Ir a la web</Link>
       </FlexBetween>
       <Typography color={medium} m="0.5rem 0">
-        Your pathway to stunning and immaculate beauty and made sure your skin
-        is exfoliating skin and shining like light.
+        
+        Si quieres ver más proyectos o saber más de mí te invito a que entres en mi página web.
       </Typography>
     </WidgetWrapper>
   );

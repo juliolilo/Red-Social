@@ -56,7 +56,7 @@ const Navbar = () => {
             },
           }}
         >
-          Sociopedia
+          Red Social
         </Typography>
         {isNonMobileScreens && (
           <FlexBetween
@@ -107,7 +107,7 @@ const Navbar = () => {
               <MenuItem value={fullName}>
                 <Typography>{fullName}</Typography>
               </MenuItem>
-              <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
+              <MenuItem onClick={() => dispatch(setLogout())}>Cerrar Sesión</MenuItem>
             </Select>
           </FormControl>
         </FlexBetween>

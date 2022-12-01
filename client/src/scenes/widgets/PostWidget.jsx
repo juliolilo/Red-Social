@@ -4,13 +4,21 @@ import {
   FavoriteOutlined,
   ShareOutlined,
 } from "@mui/icons-material";
-import { Box, Divider, IconButton, Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  Divider,
+  IconButton,
+  Typography,
+  useTheme,
+  Button,
+} from "@mui/material";
 import FlexBetween from "components/FlexBetween";
 import Friend from "components/Friend";
 import WidgetWrapper from "components/WidgetWrapper";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setPost } from "state";
+import { setPost, setPosts } from "state";
+
 
 const PostWidget = ({
   postId,
@@ -45,6 +53,18 @@ const PostWidget = ({
     });
     const updatedPost = await response.json();
     dispatch(setPost({ post: updatedPost }));
+  };
+
+  const handleDelete = async () => {
+    const response = await fetch(`http://localhost:3001/posts/${postId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    
+    const posts = await response.json();
+    dispatch(setPosts({ posts }));
   };
 
   return (
@@ -91,6 +111,7 @@ const PostWidget = ({
         <IconButton>
           <ShareOutlined />
         </IconButton>
+        <Button onClick={() => handleDelete()}>Eliminar</Button>
       </FlexBetween>
       {isComments && (
         <Box mt="0.5rem">

@@ -1,5 +1,6 @@
 import Post from "../models/Post.js";
 import User from "../models/User.js";
+import mongoose from 'mongoose';
 
 /* CREATE */
 export const createPost = async (req, res) => {
@@ -71,3 +72,14 @@ export const likePost = async (req, res) => {
     res.status(404).json({ message: err.message });
   }
 };
+
+export const deletePost = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
+  await Post.findByIdAndRemove(id);
+
+  const post = await Post.find();
+  res.status(200).json(post);
+}
