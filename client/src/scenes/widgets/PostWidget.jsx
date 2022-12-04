@@ -20,6 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPost, setPosts } from "state";
 
 
+
 const PostWidget = ({
   postId,
   postUserId,
@@ -37,7 +38,7 @@ const PostWidget = ({
   const loggedInUserId = useSelector((state) => state.user._id);
   const isLiked = Boolean(likes[loggedInUserId]);
   const likeCount = Object.keys(likes).length;
-
+ 
   const { palette } = useTheme();
   const main = palette.neutral.main;
   const primary = palette.primary.main;
@@ -111,7 +112,10 @@ const PostWidget = ({
         <IconButton>
           <ShareOutlined />
         </IconButton>
-        <Button onClick={() => handleDelete()}>Eliminar</Button>
+        {(postUserId === loggedInUserId ? <Button onClick={() => handleDelete()}>Eliminar</Button> : console.log("hola") )}
+        
+      
+        
       </FlexBetween>
       {isComments && (
         <Box mt="0.5rem">
